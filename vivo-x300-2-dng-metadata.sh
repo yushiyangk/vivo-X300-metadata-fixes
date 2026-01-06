@@ -8,18 +8,20 @@ counter=0
 no_jpeg_raw_photos=()
 
 while read -r file; do
-	((counter++))
+	if [ -n "$file" ]; then
+		((counter++))
 
-	input_file="$INPUT_DIR/$file"
-	input_file_base_name="$(basename "$input_file" .dng)"
-	input_file_parent_dir="$(dirname "$input_file")"
-	jpeg_file="$input_file_parent_dir/$input_file_base_name.jpg"
+		input_file="$INPUT_DIR/$file"
+		input_file_base_name="$(basename "$input_file" .dng)"
+		input_file_parent_dir="$(dirname "$input_file")"
+		jpeg_file="$input_file_parent_dir/$input_file_base_name.jpg"
 
-	if [ -f "$jpeg_file" ]; then
-		# Copy metadata from JPEG to XMP sidecar
-		exiftool -tagsFromFile "$jpeg_file" -overwrite_original "$input_file"
+		if [ -f "$jpeg_file" ]; then
+			# Copy metadata from JPEG to XMP sidecar
+			exiftool -tagsFromFile "$jpeg_file" -overwrite_original "$input_file"
+		fi
+
 	fi
-
 done <<< "$(find "$INPUT_DIR" -type f -name '*.dng' -printf '%P\n')"
 
 echo ""

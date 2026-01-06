@@ -22,7 +22,7 @@ while read -r file; do
 	if [ -n "$maker_note" ]; then
 
 		# Fix maker note of jpg
-		exiftool -charset exif= -EXIF:UserComment= -XMP-exif:MakerNote="$maker_note" -overwrite_original "$input_file"
+		exiftool -EXIF:UserComment= -XMP-exif:MakerNote="$maker_note" -overwrite_original "$input_file"
 
 		# Fix maker note of any XMP sidecar files
 		readarray -d '' XMP_FILES < <( find "$input_file_parent_dir" -type f -name "$input_file_base_name"'.[xX][mM][pP]' -print0 )

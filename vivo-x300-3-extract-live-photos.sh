@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-# Requires: motionminer from PyPI, patched to extract standalone photos, as in latest commit at https://github.com/yushiyangk/MotionMiner/tree/photo
+# Requires:
+# - exiftool, https://exiftool.org/
+# - motionminer from PyPI, patched to extract standalone photos, as in latest commit at https://github.com/yushiyangk/MotionMiner/tree/photo
 
 INPUT_DIR="Photos-source/x300"
 OUTPUT_VIDEO_DIR="Photos-source/x300_livephoto_video"

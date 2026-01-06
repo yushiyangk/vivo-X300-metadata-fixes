@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Requires: exiftool, https://exiftool.org/
+
 INPUT_DIR="Photos-source/x300"
 
 counter=0

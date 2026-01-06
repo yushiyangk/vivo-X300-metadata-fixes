@@ -26,11 +26,13 @@ Each of these scripts works in batch on an entire directory tree that contains i
 
 ## Dependencies
 
-For `vivo-x300-3-extract-live-photos.sh`, the package `motionminer` is required.
+**[exiftool](https://exiftool.org/)** must be installed.
+
+For `vivo-x300-3-extract-live-photos.sh`, **Python** and the package **`motionminer`** are required.
 
 This package exists on PyPI, but the version required has been patched to allow extracting standalone (non-motion) photos in addition to the embedded videos. This is available from https://github.com/yushiyangk/MotionMiner/tree/photo until such time as it gets merged by the maintainer.
 
-To intall this dependency, the recommended way is to use [https://github.com/pypa/pipx](pipx). Assuming that the patched version of motionminer has been cloned as is the current working directory,
+To intall this dependency, the recommended way is to use [pipx](https://github.com/pypa/pipx). Assuming that the patched version of motionminer has been cloned locally as is the current working directory, run
 
 ```
 pipx install .

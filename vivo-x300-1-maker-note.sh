@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Requires: exiftool, https://exiftool.org/
+
 INPUT_DIR="Photos-source/x300"
 
 counter=0
@@ -16,7 +18,7 @@ while read -r file; do
 	# The vivo X300 stock camera does neither of these, instead writing plain UTF-8 directly to the EXIF UserComment
 	# This UTF-8 can be read directly as binary (which also serves to preserve line breaks)
 	maker_note="$(exiftool -b -EXIF:UserComment "$input_file")"
-	
+
 	if [ -n "$maker_note" ]; then
 
 		# Fix maker note of jpg

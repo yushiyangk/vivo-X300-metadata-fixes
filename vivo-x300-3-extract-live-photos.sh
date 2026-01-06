@@ -6,7 +6,7 @@ INPUT_DIR="Photos-source/x300"
 OUTPUT_VIDEO_DIR="Photos-source/x300_livephoto_video"
 OUTPUT_PHOTO_DIR="Photos-source/x300_livephoto_photo"
 LIVE_PHOTO_KEYWORD="Live Photo"
-LIVE_PHOTO_HIERARCHICAL_KEYWORD=" __SOURCES|_phones|vivo X300|Panopticon|stock camera|Live Photo"
+LIVE_PHOTO_HIERARCHICAL_KEYWORD="__SOURCES|_phones|vivo X300|Panopticon|stock camera|Live Photo"
 
 motion_photos=()
 counter=0
@@ -41,7 +41,7 @@ while read -r file; do
 				-XMP-lr:HierarchicalSubject-="$LIVE_PHOTO_HIERARCHICAL_KEYWORD" -XMP-lr:HierarchicalSubject+="$LIVE_PHOTO_HIERARCHICAL_KEYWORD" \
 				-IPTCDigest=new -overwrite_original "$xmp_file"
 		done
-			
+
 		# Write keyword to extracted photo and remove motion photo metadata (except VCamera)
 		exiftool \
 			-IPTC:Keywords-="$LIVE_PHOTO_KEYWORD" -IPTC:Keywords+="$LIVE_PHOTO_KEYWORD" \
@@ -54,7 +54,7 @@ while read -r file; do
 			-XMP-GContainer:DirectoryItemPadding= \
 			-XMP-GContainer:DirectoryItemSemantic= \
 			-IPTCDigest=new -overwrite_original "$output_photo_file"
-			
+
 		motion_photos+=("$input_file")
 	fi
 done <<< "$(find "$INPUT_DIR" -type f -name *.jpg -printf '%P\n')"
@@ -67,6 +67,6 @@ if [ ${#motion_photos[@]} -ne 0 ]; then
 	done
 	echo ""
 	echo "Extracted to $OUTPUT_VIDEO_DIR and $OUTPUT_PHOTO_DIR"
-else 
+else
 	echo "Found and extracted 0 motion photos out of $counter original *.jpg files"
 fi

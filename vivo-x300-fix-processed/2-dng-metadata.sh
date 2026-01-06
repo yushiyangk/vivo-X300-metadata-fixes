@@ -20,8 +20,10 @@ while read -r file; do
 		if [ -f "$jpeg_file" ]; then
 			# Copy metadata from JPEG to DNG
 			exiftool -tagsFromFile "$jpeg_file" -overwrite_original "$input_file"
-		fi
+		else
+			no_jpeg_raw_photos+=("$file")
 
+		fi
 	fi
 done <<< "$(find "$INPUT_DIR" -type f -name '*.dng' -printf '%P\n')"
 

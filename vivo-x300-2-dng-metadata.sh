@@ -19,6 +19,8 @@ while read -r file; do
 		if [ -f "$jpeg_file" ]; then
 			# Copy metadata from JPEG to XMP sidecar
 			exiftool -tagsFromFile "$jpeg_file" -overwrite_original "$input_file"
+		else
+			no_jpeg_raw_photos+=("$file")
 		fi
 
 	fi

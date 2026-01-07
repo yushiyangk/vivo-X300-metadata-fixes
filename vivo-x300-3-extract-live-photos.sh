@@ -64,6 +64,9 @@ while read -r file; do
 	fi
 done <<< "$(find "$INPUT_DIR" -type f -name '*.jpg' -printf '%P\n')"
 
+find "$OUTPUT_VIDEO_DIR" -type d -empty -delete
+find "$OUTPUT_PHOTO_DIR" -type d -empty -delete
+
 echo ""
 if [ ${#motion_photos[@]} -ne 0 ]; then
 	echo "Found and extracted ${#motion_photos[@]} motion photos out of $counter original *.jpg files:"

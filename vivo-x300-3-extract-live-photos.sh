@@ -25,7 +25,7 @@ while read -r file; do
 		mkdir -p "$(dirname "$output_video_file")"
 		mkdir -p "$(dirname "$output_photo_file")"
 
-		if motionminer "Photos-source/x300/$file" -o "$output_video_file" -p "$output_photo_file"; then
+		if motionminer "$input_file" -o "$output_video_file" -p "$output_photo_file"; then
 			# Write keyword to original image
 			exiftool \
 				-IPTC:Keywords-="$LIVE_PHOTO_KEYWORD" -IPTC:Keywords+="$LIVE_PHOTO_KEYWORD" \

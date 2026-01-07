@@ -35,8 +35,8 @@ while read -r file; do
 				-IPTCDigest=new -overwrite_original "$input_file"
 
 			# Write keyword to any XMP sidecar files
-			readarray -d '' XMP_FILES < <( find "$input_file_parent_dir" -type f -name "$input_file_base_name"'.[xX][mM][pP]' -print0 )
-			for xmp_file in "${XMP_FILES[@]}"; do
+			readarray -d '' xmp_files < <( find "$input_file_parent_dir" -type f -name "$input_file_base_name"'.[xX][mM][pP]' -print0 )
+			for xmp_file in "${xmp_files[@]}"; do
 				exiftool \
 					-IPTC:Keywords-="$LIVE_PHOTO_KEYWORD" -IPTC:Keywords+="$LIVE_PHOTO_KEYWORD" \
 					-XMP-dc:Subject-="$LIVE_PHOTO_KEYWORD" -XMP-dc:Subject+="$LIVE_PHOTO_KEYWORD" \

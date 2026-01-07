@@ -62,7 +62,7 @@ while read -r file; do
 		fi
 
 	fi
-done <<< "$(find "$INPUT_DIR" -type f -name *.jpg -printf '%P\n')"
+done <<< "$(find "$INPUT_DIR" -type f -name '*.jpg' -printf '%P\n')"
 
 echo ""
 if [ ${#motion_photos[@]} -ne 0 ]; then

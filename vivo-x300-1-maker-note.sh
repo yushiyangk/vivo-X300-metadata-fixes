@@ -32,8 +32,8 @@ while read -r file; do
 			exiftool -EXIF:UserComment= -XMP-exif:MakerNote'<='"$maker_note_temp_file" -overwrite_original "$input_file"
 
 			# Fix maker note of any XMP sidecar files
-			readarray -d '' XMP_FILES < <( find "$input_file_parent_dir" -type f -name "$input_file_base_name"'.[xX][mM][pP]' -print0 )
-			for xmp_file in "${XMP_FILES[@]}"; do
+			readarray -d '' xmp_files < <( find "$input_file_parent_dir" -maxdepth 1 -type f -name "$input_file_base_name"'.[xX][mM][pP]' -print0 )
+			for xmp_file in "${xmp_files[@]}"; do
 				exiftool -EXIF:UserComment= -XMP-exif:MakerNote'<='"$maker_note_temp_file" -overwrite_original "$xmp_file"
 			done
 

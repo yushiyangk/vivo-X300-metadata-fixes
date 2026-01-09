@@ -15,7 +15,6 @@ while read -r file; do
 		input_file_base_name="$(basename "$input_file" .dng)"
 		input_file_parent_dir="$(dirname "$input_file")"
 		jpeg_file="$input_file_parent_dir/$input_file_base_name.jpg"
-		#xmp_file="$input_file_parent_dir/$input_file_base_name.xmp"
 
 		if [ -f "$jpeg_file" ]; then
 			# Copy metadata from JPEG to DNG
